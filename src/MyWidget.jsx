@@ -22,6 +22,11 @@ function MyWidgetApp() {
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>My Custom Extension</h2>
+      <div>
+        {subscriptions.map(sub => (
+          <div key={sub.id}>{sub.product_title}</div>
+        ))}
+      </div>
     </div>
   );
 }
