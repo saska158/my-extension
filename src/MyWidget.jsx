@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { initRecharge, loginCustomerPortal, listSubscriptions } from '@rechargeapps/storefront-client';
 
 initRecharge({
+  storeIdentifier: 'saskas-musical-instruments.myshopify.com',
   loginRetryFn: loginCustomerPortal,
 });
 
@@ -10,13 +11,13 @@ function MyWidgetApp() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
-    listSubscriptions().then(data => {
-      console.log('data', data)
-      setSubscriptions(data.subscriptions)
-    })
+    loginCustomerPortal().then(session => {
+      return listSubscriptions(session, { limit: 25 });
+    }).then(data => {
+      console.log('data', data);
+      setSubscriptions(data.subscriptions);
+    }).catch(err => console.error('Error:', err));
   }, [])
-
-  console.log('subscriptions', subscriptions)
 
   return (
     <div style={styles.container}>
