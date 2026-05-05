@@ -7,10 +7,6 @@ function MyWidgetApp() {
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>My Custom Extension</h2>
-      <p style={styles.text}>Welcome to your customer portal extension!</p>
-      <button style={styles.button} onClick={() => setCount(c => c + 1)}>
-        Clicked {count} {count === 1 ? 'time' : 'times'}
-      </button>
     </div>
   );
 }
