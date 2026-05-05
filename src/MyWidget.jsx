@@ -14,7 +14,7 @@ function Carousel({ products }) {
   const next = () => setIndex(i => (i + 1) % products.length);
 
   const product = products[index];
-  const image = product.images?.[0]?.url;
+  const image = product.images?.[0]?.medium || product.images?.[0]?.original;
   const price = product.minimum_variant_prices?.[0];
 
   return (
@@ -54,17 +54,19 @@ function MyWidgetApp() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    loginCustomerPortal()
-      .then(session => productSearch(session, { format_version: '2022-06', limit: 25 }))
-      .then(data => {
+    async function fetchProducts() {
+      try {
+        const session = await loginCustomerPortal();
+        const data = await productSearch(session, { format_version: '2022-06', limit: 25 });
         setProducts(data.products);
-        setLoading(false);
-      })
-      .catch(err => {
+      } catch (err) {
         console.error('Error:', err);
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+    fetchProducts();
   }, []);
 
   return (
