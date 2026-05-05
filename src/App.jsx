@@ -6,7 +6,7 @@ export default function App() {
       borderRadius: '8px',
       fontFamily: 'sans-serif',
     }}>
-      My custom extension
+      My custom extension eeeee
     </div>
   )
 }
