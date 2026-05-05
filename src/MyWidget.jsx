@@ -6,7 +6,7 @@ function MyWidgetApp() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>My Custom Extensionnnnnn</h2>
+      <h2 style={styles.title}>My Custom Extension</h2>
     </div>
   );
 }
