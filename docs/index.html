@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Widget Preview</title>
+  <script type="module">
+    import MyWidget from './my-widget.js';
+    customElements.define('my-widget', MyWidget);
+  </script>
+</head>
+<body style="padding: 40px; background: #f9fafb;">
+  <my-widget></my-widget>
+</body>
+</html>
