@@ -56,4 +56,6 @@ class MyWidget extends HTMLElement {
   }
 }
 
+customElements.define('my-widget', MyWidget);
+
 export default MyWidget;
