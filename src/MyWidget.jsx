@@ -6,17 +6,17 @@ function MyWidgetApp() {
   const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
-    listSubscriptions().then(data => setSubscriptions(data.subscriptions))
-  }, [subscriptions])
+    listSubscriptions().then(data => {
+      console.log('data', data)
+      setSubscriptions(data.subscriptions)
+    })
+  }, [])
+
+  console.log('subscriptions', subscriptions)
 
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>My Custom Extension</h2>
-      <div>
-        {subscriptions.map(sub => (
-          <div key={sub.id}>{sub.product_title}</div>
-        ))}
-      </div>
     </div>
   );
 }
