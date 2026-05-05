@@ -7,7 +7,7 @@ function MyWidgetApp() {
 
   useEffect(() => {
     listSubscriptions().then(data => setSubscriptions(data.subscriptions))
-  })
+  }, [subscriptions])
 
   return (
     <div style={styles.container}>
