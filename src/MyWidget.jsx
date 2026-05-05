@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { getSubscriptions } from '@rechargeapps/storefront-client';                                              
+import { listSubscriptions } from '@rechargeapps/storefront-client';                                       
 
 function MyWidgetApp() {
-  const [subscriptions, setSubscriptions] = useState([]);      
-  
-  useEffect(() => {                                                                                              
-      getSubscriptions().then(data => setSubscriptions(data.subscriptions))
+  const [subscriptions, setSubscriptions] = useState([]);
+
+  useEffect(() => {
+    listSubscriptions().then(data => setSubscriptions(data.subscriptions))
   })
 
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>My Custom Extension</h2>
-      <div>                                                                                                          
-        {subscriptions.map(sub => (                                                                                
-          <div key={sub.id}>{sub.product_title}</div>                                                              
-        ))}                                                                                                          
+      <div>
+        {subscriptions.map(sub => (
+          <div key={sub.id}>{sub.product_title}</div>
+        ))}
       </div>
     </div>
   );
@@ -40,6 +40,8 @@ const styles = {
     color: '#6b7280',
   },
 };
+
+
 
 class MyWidget extends HTMLElement {
   connectedCallback() {
