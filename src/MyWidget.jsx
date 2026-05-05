@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import { listSubscriptions } from '@rechargeapps/storefront-client';                                       
+import { initRecharge, loginCustomerPortal, listSubscriptions } from '@rechargeapps/storefront-client';
+
+initRecharge({
+  loginRetryFn: loginCustomerPortal,
+});
 
 function MyWidgetApp() {
   const [subscriptions, setSubscriptions] = useState([]);
