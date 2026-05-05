@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { getSubscriptions } from '@rechargeapps/storefront-client';                                              
 
 function MyWidgetApp() {
-  const [count, setCount] = useState(0);
+  const [subscriptions, setSubscriptions] = useState([]);      
+  
+  useEffect(() => {                                                                                              
+      getSubscriptions().then(data => setSubscriptions(data.subscriptions))
+  })
 
   return (
     <div style={styles.container}>
       <h2 style={styles.title}>My Custom Extension</h2>
+      <div>                                                                                                          
+        {subscriptions.map(sub => (                                                                                
+          <div key={sub.id}>{sub.product_title}</div>                                                              
+        ))}                                                                                                          
+      </div>
     </div>
   );
 }
@@ -15,11 +25,8 @@ const styles = {
   container: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     padding: '24px',
-    borderRadius: '12px',
-    border: '1px solid #e5e7eb',
     background: '#ffffff',
     maxWidth: '400px',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
   },
   title: {
     margin: '0 0 8px',
@@ -31,16 +38,6 @@ const styles = {
     margin: '0 0 16px',
     fontSize: '14px',
     color: '#6b7280',
-  },
-  button: {
-    padding: '8px 16px',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#ffffff',
-    background: '#6366f1',
-    border: 'none',
-    borderRadius: '6px',
-    cursor: 'pointer',
   },
 };
 
