@@ -50,8 +50,10 @@ const styles = {
 
 class MyWidget extends HTMLElement {
   connectedCallback() {
+    if (this._mounted) return;
+    this._mounted = true;
     const mountPoint = document.createElement('div');
-    this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
+    this.appendChild(mountPoint);
     ReactDOM.createRoot(mountPoint).render(<MyWidgetApp />);
   }
 }
