@@ -75,7 +75,6 @@ const styles = {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     padding: '24px',
     background: '#ffffff',
-    maxWidth: '480px',
   },
   title: {
     margin: '0 0 16px',
