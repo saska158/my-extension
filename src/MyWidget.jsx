@@ -73,7 +73,7 @@ function MyWidgetApp() {
 const styles = {
   container: {
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    padding: '24px',
+    padding: '24px 0',
     background: '#ffffff',
   },
   title: {
