@@ -101,12 +101,15 @@ const styles = {
     border: '1px solid #e5e7eb',
     overflow: 'hidden',
     flexShrink: 0,
+    padding: '8px',
+    boxSizing: 'border-box',
   },
   image: {
     width: '100%',
     height: '160px',
     objectFit: 'cover',
     display: 'block',
+    borderRadius: '8px',
   },
   cardBody: {
     padding: '10px',
