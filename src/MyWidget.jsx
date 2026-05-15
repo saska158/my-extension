@@ -59,7 +59,7 @@ function MyWidgetApp() {
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Products</h2>
+      <h2 style={styles.title}>Recommended for you</h2>
       {loading && <p style={styles.status}>Loading...</p>}
       {error && <p style={styles.status}>Error: {error}</p>}
       {!loading && !error && products.length === 0 && (
